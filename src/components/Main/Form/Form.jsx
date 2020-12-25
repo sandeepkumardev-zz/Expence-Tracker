@@ -32,9 +32,12 @@ const NewTransactionForm = () => {
       setFormData({ ...formData, type: 'Expense' });
     }
 
-    setOpen(true);
-    addTransaction({ ...formData, amount: Number(formData.amount), id: uuidv4() });
-    setFormData(initialState);
+    
+    if (formData.amount && formData.category && formData.type && formData.date) {
+        addTransaction({ ...formData, amount: Number(formData.amount), id: uuidv4() });
+        setFormData(initialState);
+        setOpen(true);
+    }
   };
 
   useEffect(() => {
